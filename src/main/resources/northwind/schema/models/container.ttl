@@ -1,0 +1,9 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix container: <https://schemas.goodforgoodbusiness.org/general/container#> .
+
+container:Container a owl:Class .
+container:describedByContainer a owl:ObjectProperty .
+container:creator a owl:ObjectProperty .
+container:content a owl:DataProperty .
+container:hasAntecedent a owl:ObjectProperty .
+container:describesEntity a owl:ObjectProperty .

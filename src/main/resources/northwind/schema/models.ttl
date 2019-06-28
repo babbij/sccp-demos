@@ -1,0 +1,62 @@
+# baseURI: http://inova8.com/odata4sparql/models
+# imports: http://inova8.com/odata4sparql
+
+@prefix : <http://inova8.com/odata4sparql/models#> .
+@prefix odata4sparql: <http://inova8.com/odata4sparql#> .
+@prefix openrdf: <http://www.openrdf.org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rep: <http://www.openrdf.org/config/repository#> .
+@prefix sparql: <http://www.openrdf.org/config/repository/sparql#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+:DEMO
+  rdf:type odata4sparql:Dataset ;
+  rdf:type odata4sparql:Prefix ;
+  odata4sparql:dataRepository :DEMO_Data ;
+  odata4sparql:datasetPrefix odata4sparql:FOAF ;
+  odata4sparql:datasetPrefix odata4sparql:OWL ;
+  odata4sparql:datasetPrefix odata4sparql:RDFS ;
+  odata4sparql:datasetPrefix odata4sparql:SKOS ;
+  odata4sparql:datasetPrefix :DEMO ;
+  odata4sparql:defaultPrefix :DEMO ;
+  odata4sparql:namespace <https://schemas.goodforgoodbusiness.org/> ;
+  odata4sparql:prefix "com"^^xsd:string ;
+  odata4sparql:vocabularyRepository :DEMO_Vocabulary ;
+  odata4sparql:withRdfAnnotations "false"^^xsd:boolean ;
+  odata4sparql:withSapAnnotations "false"^^xsd:boolean ;
+  odata4sparql:useBaseType "false"^^xsd:boolean ;
+  rdfs:label "COM"^^xsd:string ;
+.
+
+:DEMO_Data
+  rdf:type rep:Repository ;
+  rep:repositoryID "DEMO_Data"^^xsd:string ;
+  rep:repositoryImpl :DEMO_Data_Impl ;
+  rdfs:label "DEMO Data"^^xsd:string ;
+.
+:DEMO_Data_Impl
+  rdf:type openrdf:SPARQLRepository ;
+  odata4sparql:defaultQueryLimit 10000 ;
+  odata4sparql:sparqlProfile odata4sparql:VIRTUOSO ;
+  rep:repositoryType openrdf:SPARQLRepository ;
+  sparql:query-endpoint <http://localhost:8081/sparql>;
+  sparql:update-endpoint <http://localhost:8081/sparql>;
+  rdfs:label "DEMO Data Impl"^^xsd:string ;
+.
+:DEMO_Vocabulary
+  rdf:type rep:Repository ;
+  rep:repositoryID "DEMO_Vocabulary"^^xsd:string ;
+  rep:repositoryImpl :DEMO_Vocabulary_Impl ;
+  rdfs:label "DEMO Vocabulary"^^xsd:string ;
+.
+:DEMO_Vocabulary_Impl
+  rdf:type openrdf:SPARQLRepository ;
+  odata4sparql:sparqlProfile odata4sparql:VIRTUOSO ;
+  rep:repositoryType openrdf:SPARQLRepository ;
+  sparql:query-endpoint <http://localhost:8071/sparql>;
+  sparql:update-endpoint <http://localhost:8071/sparql>;
+  rdfs:label "DEMO Vocabulary Impl"^^xsd:string ;
+.
