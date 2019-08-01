@@ -1,8 +1,8 @@
-package com.goodforgoodbusiness.demo.module;
+package com.colabriq.demo.module;
 
-import static com.goodforgoodbusiness.shared.ConfigLoader.loadConfig;
+import static com.colabriq.shared.ConfigLoader.loadConfig;
 
-import com.goodforgoodbusiness.shared.LogConfigurer;
+import com.colabriq.shared.LogConfigurer;
 
 public class EngineTestRunner {
 	public static void main(String[] args) throws Exception {

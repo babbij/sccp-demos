@@ -1,6 +1,6 @@
-package com.goodforgoodbusiness.demo.module;
+package com.colabriq.demo.module;
 
-import com.goodforgoodbusiness.endpoint.EndpointModule;
+import com.colabriq.endpoint.EndpointModule;
 
 /**
  * This exists mainly so we can easily pick up properties files from the test classpath

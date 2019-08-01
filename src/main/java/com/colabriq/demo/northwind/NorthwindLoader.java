@@ -1,4 +1,4 @@
-package com.goodforgoodbusiness.demo.northwind;
+package com.colabriq.demo.northwind;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,12 +17,12 @@ import java.util.stream.Stream;
 import org.apache.commons.lang.StringUtils;
 import org.apache.jena.rdf.model.Model;
 
-import com.goodforgoodbusiness.model.Link;
-import com.goodforgoodbusiness.model.Link.RelType;
-import com.goodforgoodbusiness.shared.Skolemizer;
-import com.goodforgoodbusiness.shared.treesort.TreeNode;
-import com.goodforgoodbusiness.shared.treesort.TreeSort;
-import com.goodforgoodbusiness.utils.RDFClient;
+import com.colabriq.model.Link;
+import com.colabriq.model.Link.RelType;
+import com.colabriq.shared.Skolemizer;
+import com.colabriq.shared.treesort.TreeNode;
+import com.colabriq.shared.treesort.TreeSort;
+import com.colabriq.utils.RDFClient;
 import com.google.gson.JsonParser;
 
 /**

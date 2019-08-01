@@ -1,13 +1,13 @@
-package com.goodforgoodbusiness.demo.northwind;
+package com.colabriq.demo.northwind;
 
-import static com.goodforgoodbusiness.shared.ConfigLoader.loadConfig;
+import static com.colabriq.shared.ConfigLoader.loadConfig;
 import static java.lang.System.getenv;
 
 import java.io.File;
 
-import com.goodforgoodbusiness.endpoint.EndpointModule;
-import com.goodforgoodbusiness.engine.EngineModule;
-import com.goodforgoodbusiness.shared.LogConfigurer;
+import com.colabriq.endpoint.EndpointModule;
+import com.colabriq.engine.EngineModule;
+import com.colabriq.shared.LogConfigurer;
 import com.inova8.odata2sparql.OData2SPARQLServer;
 
 /** launches an endpoint that loads the beef turtle files directly */
