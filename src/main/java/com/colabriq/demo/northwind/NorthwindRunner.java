@@ -1,14 +1,10 @@
 package com.colabriq.demo.northwind;
 
 import static com.colabriq.shared.ConfigLoader.loadConfig;
-import static java.lang.System.getenv;
-
-import java.io.File;
 
 import com.colabriq.endpoint.EndpointModule;
 import com.colabriq.engine.EngineModule;
 import com.colabriq.shared.LogConfigurer;
-import com.inova8.odata2sparql.OData2SPARQLServer;
 
 /** launches an endpoint that loads the beef turtle files directly */
 public class NorthwindRunner {
@@ -24,6 +20,6 @@ public class NorthwindRunner {
 		var schemaConfig = loadConfig(NorthwindRunner.class, "northwind/schema.properties");
 		new EndpointModule(schemaConfig).start();
 		
-		new OData2SPARQLServer(8061, new File(getenv("MODELS_FILE"))).start();
+//		new OData2SPARQLServer(8061, new File(getenv("MODELS_FILE"))).start();
 	}
 }
