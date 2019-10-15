@@ -193,7 +193,12 @@ public class NorthwindLoader {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		var nwFile = new File(NorthwindLoader.class.getClassLoader().getResource("northwind/northwind.ttl").getFile());
+		if (args.length < 1) {
+			System.err.println("Must specify location of northwind.ttl");
+			return;
+		}
+		
+		var nwFile = new File(NorthwindLoader.class.getClassLoader().getResource(args[0]).getFile());
 		new NorthwindLoader(nwFile).run();
 	}
 }
