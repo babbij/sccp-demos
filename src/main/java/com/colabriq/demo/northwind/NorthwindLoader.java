@@ -30,11 +30,11 @@ import com.google.gson.JsonParser;
  *
  */
 public class NorthwindLoader {
-	public static final URI ENDPOINT_URI;
+	public static final RDFClient CLIENT;
 	
 	static {
 		try {
-			ENDPOINT_URI = new URI("http://localhost:8081/");
+			CLIENT = new RDFClient(new URI("http://localhost:8081/"));
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -169,15 +169,18 @@ public class NorthwindLoader {
 			// write out turtle
 			container.model.write(writer, "TURTLE");
 			
-			System.out.println(writer.toString());
+			var ttl = writer.toString();
 			
-			var result = new RDFClient(ENDPOINT_URI)
-				.upload("next.ttl", "text/turtle", new StringReader(writer.toString()), links);
+			System.out.println(ttl);
+			System.out.println("(length = " + ttl.length() + ")");
+			
+			var result = CLIENT.upload("next.ttl", "text/turtle", new StringReader(ttl), links);
 			
 			var jsonObject = jsonParser.parse(result).getAsJsonObject();
 			
 			// record ID against subject
-			linkMap.put(container.sub, jsonObject.get("id").getAsString());
+			var id = jsonObject.get("inner_envelope").getAsJsonObject().get("hashkey").getAsString();
+			linkMap.put(container.sub, id);
 			
 			System.out.println("----------------------------------------");
 		});
