@@ -31,10 +31,16 @@ import com.google.gson.JsonParser;
  */
 public class NorthwindLoader {
 	public static final RDFClient CLIENT;
+	public static final String DEFAULT_ENDPOINT = "http://localhost:8081/";
 	
 	static {
 		try {
-			CLIENT = new RDFClient(new URI("http://localhost:8081/"));
+			var endpoint = System.getenv("ENDPOINT");
+			if (endpoint == null) {
+				endpoint = DEFAULT_ENDPOINT;
+			}
+			
+			CLIENT = new RDFClient(new URI(endpoint));
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
