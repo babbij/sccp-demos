@@ -1,8 +1,17 @@
+FROM maven:3-jdk-11
+WORKDIR /build
+
+COPY . /build
+RUN mvn -DskipTests install dependency:copy-dependencies
+
 FROM openjdk:11
+
 WORKDIR /app
 
-#COPY ./target/demo-0.1-SNAPSHOT.jar /app
-COPY ./lib /app/lib
-COPY ../lib/kpabe/lib/native/ /native
+COPY --from=0 /build/sccp-demos/target/demo-*.jar /app/
+COPY --from=0 /build/sccp-demos/target/dependency/ /app/dependency/
 
-CMD java -jar *.jar
+COPY ./demo/src/main/script /script
+
+CMD tail -f /dev/null
+
