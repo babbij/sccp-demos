@@ -198,7 +198,7 @@ public class NorthwindLoader {
 			return;
 		}
 		
-		var nwFile = new File(NorthwindLoader.class.getClassLoader().getResource(args[0]).getFile());
+		var nwFile = new File(args[0]);
 		new NorthwindLoader(nwFile).run();
 	}
 }
